@@ -2,6 +2,9 @@
 Simple creation Virtual Host
 
 
-```$ cd /usr/local/bin
+```
+$ cd /usr/local/bin
 $ wget -O virtualhost https://raw.githubusercontent.com/vitovtnet/virtualhost/master/vh.sh
-$ chmod +x vh ```
+$ chmod +x vh 
+
+```
