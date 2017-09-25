@@ -42,6 +42,8 @@ if [[ "$rootDir" =~ ^/ ]]; then
 fi
 
 rootDir=$userDir$rootDir
+wwwDir=$userDir$rootDir/www
+logDir=$userDir$rootDir/logs
 
 if [ "$action" == 'create' ]
 	then
@@ -57,13 +59,22 @@ if [ "$action" == 'create' ]
 			mkdir $rootDir
 			### give permission to root dir
 			chmod 755 $rootDir
+
+			mkdir $wwwDir
+
+			chmod 755 $wwwDir
+
+			mkdir $logDir
+
+			chmod 755 $logDir
+
 			### write test file in the new domain dir
-			if ! echo "<?php echo phpinfo(); ?>" > $rootDir/phpinfo.php
+			if ! echo "<?php echo phpinfo(); ?>" > $wwwDir/phpinfo.php
 			then
-				echo $"ERROR: Not able to write in file $rootDir/phpinfo.php. Please check permissions"
+				echo $"ERROR: Not able to write in file $wwwDir/phpinfo.php. Please check permissions"
 				exit;
 			else
-				echo $"Added content to $rootDir/phpinfo.php"
+				echo $"Added content to $wwwDir/phpinfo.php"
 			fi
 		fi
 
@@ -77,14 +88,14 @@ if [ "$action" == 'create' ]
 			<Directory />
 				AllowOverride All
 			</Directory>
-			<Directory $rootDir>
+			<Directory $wwwDir>
 				Options Indexes FollowSymLinks MultiViews
 				AllowOverride all
 				Require all granted
 			</Directory>
-			ErrorLog /var/log/apache2/$domain-error.log
+			ErrorLog $logDir/error.log
 			LogLevel error
-			CustomLog /var/log/apache2/$domain-access.log combined
+			CustomLog $logDir/access.log combined
 		</VirtualHost>" > $sitesAvailabledomain
 		then
 			echo -e $"There is an ERROR creating $domain file"
