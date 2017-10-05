@@ -67,6 +67,8 @@ apacheDirConf = "/etc/apache2/mods-enabled/dir.conf"
         echo -e $"\nNew $apacheDirConf Created\n"
     fi
 
+sudo systemctl restart apache2
+
 #Install SSL
 
 sudo apt-get install python-certbot-apache
