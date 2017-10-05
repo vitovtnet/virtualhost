@@ -16,7 +16,12 @@ sudo virtualhost [create | delete] [domain] [optional host_dir]
 
 # Setup shell script
 
-Install Apache + PHP 7.1 + MySQL + NPM + Virtualhost SH
+Will install:
+- Apache
+- PHP 7.1
+- MySQL
+- Virtualhost creator
+- Composer
 
 ### Usage
 
