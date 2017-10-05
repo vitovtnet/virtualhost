@@ -30,6 +30,7 @@ sudo apt-get install php-memcached
 
 sudo php -v
 
+
 #Install firewall
 sudo apt-get install ufw
 sudo ufw status verbose
@@ -95,3 +96,7 @@ sudo php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60
 sudo php composer-setup.php
 sudo php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
+
+#Install redis
+
+sudo apt-get install redis-server

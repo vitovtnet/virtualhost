@@ -22,6 +22,7 @@ Will install:
 - MySQL
 - Virtualhost creator
 - Composer
+- Redis
 
 ### Usage
 
