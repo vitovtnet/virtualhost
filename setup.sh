@@ -3,6 +3,9 @@
 ### Set Language
 TEXTDOMAIN=virtualhost
 
+### Set default parameters
+apacheDirConf='/etc/apache2/mods-enabled/dir.conf'
+
 if [ "$(whoami)" != 'root' ]; then
 	echo $"You have no permission to run $0 as non-root user. Use sudo"
 		exit 1;
@@ -52,9 +55,6 @@ sudo apt-get install mysql-server
 sudo mysql_secure_installation
 
 #Install PHP & Apache packages
-
-apacheDirConf = "/etc/apache2/mods-enabled/dir.conf"
-
     if !echo "
     <IfModule mod_dir.c>
         DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
