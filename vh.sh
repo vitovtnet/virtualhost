@@ -91,20 +91,23 @@ if [ "$action" == 'create' ]
 
 		### create virtual host rules file
 		if ! echo "
-		<VirtualHost *:80>
-			ServerAdmin $email
-			ServerName $domain
-			ServerAlias $domain
-			DocumentRoot $rootDir
-			<Directory $wwwDir>
-				Options Indexes FollowSymLinks MultiViews
-				AllowOverride all
-				Require all granted
-			</Directory>
-			ErrorLog $logDir/error.log
-			LogLevel error
-			CustomLog $logDir/access.log combined
-		</VirtualHost>" > $sitesAvailabledomain
+<VirtualHost *:80>
+        ServerAdmin $email
+        ServerName $domain
+
+        DocumentRoot $wwwDir/
+        ErrorLog $logDir/error.log
+        CustomLog $logDir/access.log combined
+
+        DocumentRoot $rootDir
+        <Directory $wwwDir>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Order Allow,Deny
+            Allow from All
+            Require all granted
+        </Directory>
+</VirtualHost>" > $sitesAvailabledomain
 		then
 			echo -e $"There is an ERROR creating $domain file"
 			exit;
