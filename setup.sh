@@ -24,8 +24,9 @@ sudo apt-get install python-software-properties
 sudo apt install -y language-pack-en-base
 sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
 sudo apt-get install php7.1
+sudo apt-get install php-intl php-curl php-mysql php-xml
 
-php -v
+sudo php -v
 
 #Install firewall
 sudo apt-get install ufw
