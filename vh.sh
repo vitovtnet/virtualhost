@@ -10,7 +10,7 @@ owner=$(who am i | awk '{print $1}')
 email='webmaster@localhost'
 sitesEnable='/etc/apache2/sites-enabled/'
 sitesAvailable='/etc/apache2/sites-available/'
-userDir='/home/'
+homeDir='/home/'
 sitesAvailabledomain=$sitesAvailable$domain.conf
 
 ### don't modify from here unless you know what you are doing ####
@@ -38,12 +38,18 @@ fi
 
 ### if root dir starts with '/', don't use /var/www as default starting point
 if [[ "$rootDir" =~ ^/ ]]; then
-	userDir=''
+	homeDir=''
 fi
 
-rootDir=$userDir$rootDir
+rootDir=$homeDir$rootDir
 wwwDir=$rootDir/www
 logDir=$rootDir/logs
+
+echo -e $"Root directory: $rootDir\n"
+echo -e $"WWW directory: $wwwDir\n"
+echo -e $"Logs directory: $logDir\n"
+
+exit;
 
 if [ "$action" == 'create' ]
 	then
