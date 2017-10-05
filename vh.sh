@@ -136,6 +136,9 @@ if [ "$action" == 'create' ]
 		### restart Apache
 		sudo service apache2 reload
 
+        #Instal SSL certificate
+		sudo certbot --apache
+
 		### show the finished message
 		echo -e $"Complete! \nYou now have a new Virtual Host \nYour new host is: http://$domain \nAnd its located at $rootDir"
 		exit;
@@ -179,3 +182,4 @@ if [ "$action" == 'create' ]
 		echo -e $"Complete!\nYou just removed Virtual Host $domain"
 		exit 0;
 fi
+
