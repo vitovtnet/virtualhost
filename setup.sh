@@ -50,3 +50,16 @@ sudo mysql_secure_installation
 
 #Install PHP & Apache packages
 
+apacheDirConf = "/etc/apache2/mods-enabled/dir.conf"
+
+    if !echo "
+    <IfModule mod_dir.c>
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+    </IfModule>
+    " > $apacheDirConf
+    then
+        echo -e $"Error with creating $apacheDirConf "
+        exit;
+    else
+        echo -e $"\nNew $apacheDirConf Created\n"
+    fi
