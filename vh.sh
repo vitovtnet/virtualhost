@@ -50,7 +50,6 @@ echo -e $"WWW directory: $wwwDir\n"
 echo -e $"Logs directory: $logDir\n"
 echo -e $"\n\n===================\n\n"
 
-
 if [ "$action" == 'create' ]
 	then
 		### check if domain already exists
