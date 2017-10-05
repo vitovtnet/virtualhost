@@ -8,6 +8,9 @@ if [ "$(whoami)" != 'root' ]; then
 		exit 1;
 fi
 
+sudo add-apt-repository ppa:certbot/certbot
+sudo add-apt-repository ppa:ondrej/php
+
 sudo apt-get update
 
 #Install apache && test it
@@ -15,9 +18,9 @@ sudo apt-get install apache2
 
 #Install PHP 7.`
 sudo apt-get install python-software-properties
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install -y php7.1
+sudo apt install -y language-pack-en-base
+sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
+sudo apt-get install php7.1
 
 php -v
 
@@ -63,3 +66,14 @@ apacheDirConf = "/etc/apache2/mods-enabled/dir.conf"
     else
         echo -e $"\nNew $apacheDirConf Created\n"
     fi
+
+#Install SSL
+
+sudo apt-get install python-certbot-apache
+
+cd /usr/local/bin
+wget -O virtualhost https://raw.githubusercontent.com/vitovtnet/virtualhost/master/vh.sh
+sudo chmod +x virtualhost
+
+
+

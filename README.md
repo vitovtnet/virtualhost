@@ -20,7 +20,7 @@ Install Apache + PHP 7.1 + MySQL + NPM + Virtualhost SH
 ### Usage
 
 ```
-cd ~
+cd /usr/local/bin
 wget -O setup https://raw.githubusercontent.com/vitovtnet/virtualhost/master/setup.sh
 sudo chmod +x setup.sh
 ./setup.sh
