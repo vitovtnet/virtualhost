@@ -42,8 +42,8 @@ if [[ "$rootDir" =~ ^/ ]]; then
 fi
 
 rootDir=$userDir$rootDir
-wwwDir=$userDir$rootDir/www
-logDir=$userDir$rootDir/logs
+wwwDir=$rootDir/www
+logDir=$rootDir/logs
 
 if [ "$action" == 'create' ]
 	then

@@ -77,5 +77,15 @@ cd /usr/local/bin
 wget -O virtualhost https://raw.githubusercontent.com/vitovtnet/virtualhost/master/vh.sh
 sudo chmod +x virtualhost
 
+#Install MC
+
+sudo apt-get install mc
+
+#Install Htop
+
+sudo apt-get install htop
+
+
+
 
 
