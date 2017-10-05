@@ -130,13 +130,11 @@ if [ "$action" == 'create' ]
 			chown -R $owner:$owner $rootDir
 		fi
 
-		exit;
-
 		### enable website
 		sudo a2ensite $domain
 
 		### restart Apache
-		/etc/init.d/apache2 reload
+		sudo service apache2 reload
 
 		### show the finished message
 		echo -e $"Complete! \nYou now have a new Virtual Host \nYour new host is: http://$domain \nAnd its located at $rootDir"
