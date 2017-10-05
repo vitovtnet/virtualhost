@@ -7,18 +7,17 @@ $ wget -O virtualhost https://raw.githubusercontent.com/vitovtnet/virtualhost/ma
 $ chmod +x virtualhost 
 ```
 
-
-# Usage
+### Usage
 
 ```
 sudo virtualhost [create | delete] [domain] [optional host_dir]
 ```
 
-
-
 # Setup shell script
 
 Install Apache + PHP 7.1 + MySQL + NPM + Virtualhost SH
+
+### Usage
 
 ```
 cd ~
