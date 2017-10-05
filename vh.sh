@@ -96,9 +96,6 @@ if [ "$action" == 'create' ]
 			ServerName $domain
 			ServerAlias $domain
 			DocumentRoot $rootDir
-			<Directory />
-				AllowOverride All
-			</Directory>
 			<Directory $wwwDir>
 				Options Indexes FollowSymLinks MultiViews
 				AllowOverride all
@@ -116,19 +113,21 @@ if [ "$action" == 'create' ]
 		fi
 
 		### Add domain in /etc/hosts
-		if ! echo "127.0.0.1	$domain" >> /etc/hosts
-		then
-			echo $"ERROR: Not able to write in /etc/hosts"
-			exit;
-		else
-			echo -e $"Host added to /etc/hosts file \n"
-		fi
+		#if ! echo "127.0.0.1	$domain" >> /etc/hosts
+		#then
+	#		echo $"ERROR: Not able to write in /etc/hosts"
+	#		exit;
+#		else
+#			echo -e $"Host added to /etc/hosts file \n"
+	#	fi
 
 		if [ "$owner" == "" ]; then
 			chown -R $(whoami):$(whoami) $rootDir
 		else
 			chown -R $owner:$owner $rootDir
 		fi
+
+		exit;
 
 		### enable website
 		sudo a2ensite $domain
