@@ -98,8 +98,8 @@ if [ "$action" == 'create' ]
         DocumentRoot $wwwDir/
         ErrorLog $logDir/error.log
         CustomLog $logDir/access.log combined
-
-        DocumentRoot $rootDir
+        DocumentRoot $wwwDir
+        \n
         <Directory $wwwDir>
             Options Indexes FollowSymLinks
             AllowOverride All
