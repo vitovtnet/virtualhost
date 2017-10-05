@@ -48,8 +48,8 @@ logDir=$rootDir/logs
 echo -e $"Root directory: $rootDir\n"
 echo -e $"WWW directory: $wwwDir\n"
 echo -e $"Logs directory: $logDir\n"
+echo -e $"\n\n===================\n\n"
 
-exit;
 
 if [ "$action" == 'create' ]
 	then
@@ -61,18 +61,24 @@ if [ "$action" == 'create' ]
 
 		### check if directory exists or not
 		if ! [ -d $rootDir ]; then
+
+		    echo -e $"Creating root directory: $rootDir\n"
 			### create the directory
-			mkdir $rootDir
+			sudo mkdir $rootDir
 			### give permission to root dir
-			chmod 755 $rootDir
+			sudo chmod 755 $rootDir
 
-			mkdir $wwwDir
+            echo -e $"Creating www directory: $wwwDir\n"
 
-			chmod 755 $wwwDir
+			sudo mkdir $wwwDir
 
-			mkdir $logDir
+			sudo chmod 755 $wwwDir
 
-			chmod 755 $logDir
+			echo -e $"Creating logs directory: $logDir\n"
+
+			sudo mkdir $logDir
+
+			sudo chmod 755 $logDir
 
 			### write test file in the new domain dir
 			if ! echo "<?php echo phpinfo(); ?>" > $wwwDir/phpinfo.php
@@ -126,7 +132,7 @@ if [ "$action" == 'create' ]
 		fi
 
 		### enable website
-		a2ensite $domain
+		sudo a2ensite $domain
 
 		### restart Apache
 		/etc/init.d/apache2 reload
@@ -145,7 +151,7 @@ if [ "$action" == 'create' ]
 			sed -i "/$newhost/d" /etc/hosts
 
 			### disable website
-			a2dissite $domain
+			sudo a2dissite $domain
 
 			### restart Apache
 			/etc/init.d/apache2 reload
